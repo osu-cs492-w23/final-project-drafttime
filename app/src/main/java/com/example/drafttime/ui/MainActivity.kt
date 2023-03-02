@@ -1,9 +1,11 @@
-package com.example.drafttime
+package com.example.drafttime.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.example.connectedweather.R
+import com.example.drafttime.data.PlayerData
+import com.example.drafttime.R
+import com.example.drafttime.api.ConnectedSleeper
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

@@ -1,10 +1,13 @@
-package com.example.drafttime
+package com.example.drafttime.api
 
+import com.example.drafttime.data.PlayerData
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
+
+// This file is our interface with the Sleeper api to get player data
 interface ConnectedSleeper {
 
     @GET("players/nfl")
