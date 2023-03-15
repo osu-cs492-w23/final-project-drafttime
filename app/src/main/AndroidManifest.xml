@@ -13,7 +13,7 @@
         android:theme="@style/Theme.DraftTime_Final"
         tools:targetApi="31">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.example.drafttime.ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
