@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DraftTime_Final</string>
+    <string name="btn">Draft Now</string>
+    <string name="view_team_btn">View Team</string>
+    <string name="draft_team_button">Draft Team</string>
+    <string name="vs_button">Team V.S.</string>
 </resources>

@@ -59,7 +59,5 @@ data class PlayerData(
     @Json(name = "49") val player49: PlayerInfo,
     @Json(name = "50") val player50: PlayerInfo,
 
-
-
     ):java.io.Serializable
 
