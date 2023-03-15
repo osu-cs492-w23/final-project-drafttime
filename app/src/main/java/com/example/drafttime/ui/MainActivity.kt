@@ -22,11 +22,36 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+
         //TODO: Add button listener here
 
         val view_team_btn= findViewById<Button>(R.id.view_team_button)
         val draft_now_btn = findViewById<Button>(R.id.draft_now_button)
         val vs_btn = findViewById<Button>(R.id.vs_button)
+
+
+///TODO: Convert to view model to prevent reload if device is turned
+
+        sleeperConnect.getPlayerData()
+
+
+
+    .enqueue(object : Callback<PlayerData> {
+        override fun onResponse(
+            call: Call<PlayerData>,
+            response: Response<PlayerData>
+        ) {
+            ///Need to hook up adapter to this part of the response
+            if(response.isSuccessful) {
+                Log.d("Response" , "onResponse: ${response.body()}")
+               // forecastAdapter.updateForecast(response.body())
+            }
+        }
+        override fun onFailure(call: Call<PlayerData>, t: Throwable) {
+            Log.d("MainActivity","onFailure: "+t.message )
+        }
+    })
+
 
         ///View Team button listener
 
@@ -56,26 +81,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-///TODO: Convert to view model to prevent reload if device is turned
+    }
 
 
-        sleeperConnect.getPlayerData()
 
-
-    .enqueue(object : Callback<PlayerData> {
-        override fun onResponse(
-            call: Call<PlayerData>,
-            response: Response<PlayerData>
-        ) {
-            ///Need to hook up adapter to this part of the response
-            if(response.isSuccessful) {
-                Log.d("Response" , "onResponse: ${response.body()}")
-               // forecastAdapter.updateForecast(response.body())
-            }
-        }
-        override fun onFailure(call: Call<PlayerData>, t: Throwable) {
-            Log.d("MainActivity","onFailure: "+t.message )
-        }
-    })
-
-}}
+}
