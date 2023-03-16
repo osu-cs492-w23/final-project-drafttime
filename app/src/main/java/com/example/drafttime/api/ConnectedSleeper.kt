@@ -1,6 +1,6 @@
 package com.example.drafttime.api
 
-import com.example.drafttime.data.PlayerData
+import com.example.drafttime.data.PlayerInfo
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -12,7 +12,7 @@ interface ConnectedSleeper {
 
     @GET("players/nfl")
     fun getPlayerData(
-    ):Call<PlayerData>
+    ):Call<Map<String, PlayerInfo>>
     companion object{
 
         private const val BASE_URL =  "https://api.sleeper.app/v1/"

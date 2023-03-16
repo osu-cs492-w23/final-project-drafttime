@@ -12,7 +12,7 @@ data class PlayerInfo(
     @Json(name = "college") val college: String?,
     @Json(name = "team") val team : String?,
     @Json(name = "position") val postion: String?,
-    @Json(name = "number") val number: Int,
+    @Json(name = "number") val number: Int?,
     @Json(name = "age") val age: String?,
     @Json(name = "weight") val weight: String?,
     @Json(name = "height") val height: String?

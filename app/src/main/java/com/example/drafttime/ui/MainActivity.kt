@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import com.example.connectedweather.R
-import com.example.drafttime.data.PlayerData
 import com.example.drafttime.api.ConnectedSleeper
+import com.example.drafttime.data.PlayerInfo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,10 +36,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    .enqueue(object : Callback<PlayerData> {
+    .enqueue(object : Callback<Map<String, PlayerInfo>> {
         override fun onResponse(
-            call: Call<PlayerData>,
-            response: Response<PlayerData>
+            call: Call<Map<String, PlayerInfo>>,
+            response: Response<Map<String, PlayerInfo>>
         ) {
             ///Need to hook up adapter to this part of the response
             if(response.isSuccessful) {
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                // forecastAdapter.updateForecast(response.body())
             }
         }
-        override fun onFailure(call: Call<PlayerData>, t: Throwable) {
+        override fun onFailure(call: Call<Map<String, PlayerInfo>>, t: Throwable) {
             Log.d("MainActivity","onFailure: "+t.message )
         }
     })
@@ -86,3 +86,6 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
+
+
