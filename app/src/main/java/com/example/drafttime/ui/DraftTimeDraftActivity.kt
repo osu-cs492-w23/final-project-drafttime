@@ -1,5 +1,6 @@
 package com.example.drafttime.ui
 
+
 import CustomAdapter
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +17,7 @@ import retrofit2.Response
 
 class DraftTimeDraftActivity : AppCompatActivity() {
     private val sleeperConnect = ConnectedSleeper.create()
-    private lateinit var playerAdapter: CustomAdapter
+   // private lateinit var playerAdapter: CustomAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +30,7 @@ class DraftTimeDraftActivity : AppCompatActivity() {
         recyclerview.layoutManager = LinearLayoutManager(this)
         //Set fixed size
         recyclerview.setHasFixedSize(true)
-        playerAdapter = CustomAdapter()
-        recyclerview.adapter = playerAdapter
+        //recyclerview.adapter = playerAdapter
 
         //View to find button
         val generate_team_btn = findViewById<Button>(R.id.generate_team_btn)
@@ -51,15 +51,15 @@ class DraftTimeDraftActivity : AppCompatActivity() {
                     ) {
                         ///Need to hook up adapter to this part of the response
                         if (response.isSuccessful) {
+
+
+
                             //Log.d("Response", "onResponse: ${response.body()}")
                             //TODO: Adapter and recycler view should go here
-                            playerAdapter.updatePlayer(response.body())
+                            val adapter = response.body()?.let { it1 -> CustomAdapter(it1) }
+                            recyclerview.adapter = adapter
 
 
-
-
-
-                            //Recycler view adapter
 
 
 

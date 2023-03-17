@@ -6,12 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.connectedweather.R
 import com.example.drafttime.data.PlayerInfo
 
-class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-    var playerdata: List<PlayerInfo> = listOf()
-    fun updatePlayer(playerInfo: PlayerInfo{
-       playerdata = playerInfo?: listOf()
-        notifyDataSetChanged()
-    }
+
+class CustomAdapter(val playerdata: Map<String, PlayerInfo>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+
+//val map2 = playerdata.mapValues { it.value.age } To access values in map
+
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
@@ -28,10 +27,9 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        playerdata[position.toString()]?.let { holder.bind(it) }
 
-        holder.bind(this.playerdata[position])
         // sets the image to the imageview from our itemHolder class
-
 
     }
 
@@ -43,14 +41,15 @@ class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
         val pName: TextView= itemView.findViewById(R.id.name)
         val pAge: TextView = itemView.findViewById(R.id.age)
-        val pPosition : TextView = itemView.findViewById(R.id.position)
+        var pPosition : TextView = itemView.findViewById(R.id.position)
         val pTeam: TextView = itemView.findViewById(R.id.team_name)
 
         fun bind(playerInfo: PlayerInfo) {
-            pName.text = playerInfo.fullName
-            pAge.text = playerInfo.age
-            pPosition.text = playerInfo.postion
-            pTeam.text = playerInfo.team
+                pName.text = playerInfo.fullName
+                pAge.text = playerInfo.age
+                pPosition.text = playerInfo.postion
+                pTeam.text = playerInfo.team
+
 
         }
     }
