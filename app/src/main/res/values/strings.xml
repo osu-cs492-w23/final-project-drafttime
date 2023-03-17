@@ -4,4 +4,5 @@
     <string name="view_team_btn">View Team</string>
     <string name="draft_team_button">Draft Team</string>
     <string name="vs_button">Team V.S.</string>
+    <string name="generate_team">Generate Team</string>
 </resources>

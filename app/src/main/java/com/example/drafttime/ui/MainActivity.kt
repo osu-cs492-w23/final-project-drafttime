@@ -11,15 +11,18 @@ import com.example.drafttime.data.PlayerInfo
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
+import java.util.Objects
 
 
 class MainActivity : AppCompatActivity() {
-    private val sleeperConnect = ConnectedSleeper.create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        var responseVal:String
+
+
 
 
 
@@ -32,28 +35,9 @@ class MainActivity : AppCompatActivity() {
 
 ///TODO: Convert to view model to prevent reload if device is turned
 
-        sleeperConnect.getPlayerData()
-
-
-
-    .enqueue(object : Callback<Map<String, PlayerInfo>> {
-        override fun onResponse(
-            call: Call<Map<String, PlayerInfo>>,
-            response: Response<Map<String, PlayerInfo>>
-        ) {
-            ///Need to hook up adapter to this part of the response
-            if(response.isSuccessful) {
-                Log.d("Response" , "onResponse: ${response.body()}")
-               // forecastAdapter.updateForecast(response.body())
-            }
-        }
-        override fun onFailure(call: Call<Map<String, PlayerInfo>>, t: Throwable) {
-            Log.d("MainActivity","onFailure: "+t.message )
-        }
-    })
-
 
         ///View Team button listener
+        //TODO: Set up navigation to go to the different screens here
 
         view_team_btn?.setOnClickListener {
 
@@ -61,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this , ViewTeamActivity::class.java)
             startActivity(intent)
+
         }
         ///Draft now button listener
 
@@ -76,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         ///VS Button listener
         vs_btn?.setOnClickListener {
             //Start VS activity
-            val intent = Intent(this, DraftTimeDraftActivity::class.java)
+            val intent = Intent(this, DraftTimeVsActivity::class.java)
             startActivity(intent)
         }
 
