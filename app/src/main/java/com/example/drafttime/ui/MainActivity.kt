@@ -20,11 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var responseVal:String
-
-
-
-
 
         //TODO: Add button listener here
 
