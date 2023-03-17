@@ -8,7 +8,7 @@ import com.example.drafttime.data.PlayerInfo
 
 class CustomAdapter() : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
     var playerdata: List<PlayerInfo> = listOf()
-    fun updatePlayer(playerInfo: Map<String, PlayerInfo>{
+    fun updatePlayer(playerInfo: PlayerInfo{
        playerdata = playerInfo?: listOf()
         notifyDataSetChanged()
     }
