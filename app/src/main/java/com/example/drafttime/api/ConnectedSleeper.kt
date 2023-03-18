@@ -1,6 +1,5 @@
 package com.example.drafttime.api
 
-import com.example.drafttime.data.PlayerData
 import com.example.drafttime.data.PlayerInfo
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -13,7 +12,7 @@ interface ConnectedSleeper {
 
     @GET("nflTeamDataArray")
     fun getPlayerData(
-    ):Call<List<PlayerData>>
+    ):Call<List<List<PlayerInfo>>>
     companion object{
 
         private const val BASE_URL =  "http://10.0.2.2:8080/"
@@ -26,7 +25,5 @@ interface ConnectedSleeper {
                 .create(ConnectedSleeper::class.java)
 
         }
-
-
     }
 }

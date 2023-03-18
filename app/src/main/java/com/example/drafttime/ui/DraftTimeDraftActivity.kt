@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connectedweather.R
 import com.example.drafttime.api.ConnectedSleeper
-import com.example.drafttime.data.PlayerData
 import com.example.drafttime.data.PlayerInfo
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,10 +44,10 @@ class DraftTimeDraftActivity : AppCompatActivity() {
             sleeperConnect.getPlayerData()
 
 
-                .enqueue(object : Callback<List<PlayerData>> {
+                .enqueue(object : Callback <List<List<PlayerInfo>>>  {
                     override fun onResponse(
-                        call: Call<List<PlayerData>>,
-                        response: Response<List<PlayerData>>
+                        call: Call<List<List<PlayerInfo>>>,
+                        response: Response<List<List<PlayerInfo>>>
                     ) {
                         ///Need to hook up adapter to this part of the response
                         if (response.isSuccessful) {
@@ -67,7 +66,7 @@ class DraftTimeDraftActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<List<PlayerData>>, t: Throwable) {
+                    override fun onFailure(call: Call<List<List<PlayerInfo>>>, t: Throwable) {
                         Log.d("Draft time Activity ", "onFailure: " + t.message)
                     }
                 })
