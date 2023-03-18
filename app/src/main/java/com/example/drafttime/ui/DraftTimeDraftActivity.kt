@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connectedweather.R
 import com.example.drafttime.api.ConnectedSleeper
+import com.example.drafttime.data.PlayerData
 import com.example.drafttime.data.PlayerInfo
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,20 +45,20 @@ class DraftTimeDraftActivity : AppCompatActivity() {
             sleeperConnect.getPlayerData()
 
 
-                .enqueue(object : Callback<Map<String, PlayerInfo>> {
+                .enqueue(object : Callback<List<PlayerData>> {
                     override fun onResponse(
-                        call: Call<Map<String, PlayerInfo>>,
-                        response: Response<Map<String, PlayerInfo>>
+                        call: Call<List<PlayerData>>,
+                        response: Response<List<PlayerData>>
                     ) {
                         ///Need to hook up adapter to this part of the response
                         if (response.isSuccessful) {
 
 
 
-                            //Log.d("Response", "onResponse: ${response.body()}")
+                            Log.d("Response", "onResponse: ${response.body()}")
                             //TODO: Adapter and recycler view should go here
-                            val adapter = response.body()?.let { it1 -> CustomAdapter(it1) }
-                            recyclerview.adapter = adapter
+                           // val adapter = response.body()?.let { it1 -> CustomAdapter(it1) }
+                           // recyclerview.adapter = adapter
 
 
 
@@ -66,7 +67,7 @@ class DraftTimeDraftActivity : AppCompatActivity() {
                         }
                     }
 
-                    override fun onFailure(call: Call<Map<String, PlayerInfo>>, t: Throwable) {
+                    override fun onFailure(call: Call<List<PlayerData>>, t: Throwable) {
                         Log.d("Draft time Activity ", "onFailure: " + t.message)
                     }
                 })

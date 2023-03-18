@@ -1,5 +1,6 @@
 package com.example.drafttime.api
 
+import com.example.drafttime.data.PlayerData
 import com.example.drafttime.data.PlayerInfo
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -10,12 +11,12 @@ import retrofit2.http.GET
 // This file is our interface with the Sleeper api to get player data
 interface ConnectedSleeper {
 
-    @GET("players/nfl")
+    @GET("nflTeamDataArray")
     fun getPlayerData(
-    ):Call<Map<String, PlayerInfo>>
+    ):Call<List<PlayerData>>
     companion object{
 
-        private const val BASE_URL =  "https://api.sleeper.app/v1/"
+        private const val BASE_URL =  "http://10.0.2.2:8080/"
         fun create(): ConnectedSleeper {
 
             return Retrofit.Builder()

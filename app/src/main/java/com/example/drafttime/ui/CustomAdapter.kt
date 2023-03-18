@@ -45,10 +45,7 @@ class CustomAdapter(val playerdata: Map<String, PlayerInfo>) : RecyclerView.Adap
         val pTeam: TextView = itemView.findViewById(R.id.team_name)
 
         fun bind(playerInfo: PlayerInfo) {
-                pName.text = playerInfo.fullName
-                pAge.text = playerInfo.age
-                pPosition.text = playerInfo.postion
-                pTeam.text = playerInfo.team
+
 
 
         }
