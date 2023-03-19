@@ -1,6 +1,8 @@
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connectedweather.R
@@ -10,12 +12,8 @@ import kotlin.random.Random
 
 class CustomAdapter(val playerdata: List<List<PlayerInfo>>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-//val map2 = playerdata.mapValues { it.value.age } To access values in map
 
 
-
-
-    // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
         // that is used to hold list item
@@ -44,10 +42,22 @@ class CustomAdapter(val playerdata: List<List<PlayerInfo>>) : RecyclerView.Adapt
 
 
 
+
         val pName: TextView= itemView.findViewById(R.id.name)
         val pAge: TextView = itemView.findViewById(R.id.age)
         var pPosition : TextView = itemView.findViewById(R.id.position)
         val pTeam: TextView = itemView.findViewById(R.id.team_name)
+        var playerItem: PlayerInfo? = null
+
+        ///Handle clicks from the user
+        init {
+            itemView.setOnClickListener {
+
+
+                Log.d("ViewHolder" , "Clicked")
+
+            }
+        }
 
         fun bind(playerInfo: List<PlayerInfo>) {
             val value = Random.nextInt(0,10)
