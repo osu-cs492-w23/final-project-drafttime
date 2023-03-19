@@ -5,11 +5,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.connectedweather.R
 import com.example.drafttime.data.PlayerInfo
+import kotlin.random.Random
 
 
-class CustomAdapter(val playerdata: Map<String, PlayerInfo>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
+class CustomAdapter(val playerdata: List<List<PlayerInfo>>) : RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
 //val map2 = playerdata.mapValues { it.value.age } To access values in map
+
+
+
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +31,7 @@ class CustomAdapter(val playerdata: Map<String, PlayerInfo>) : RecyclerView.Adap
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        playerdata[position.toString()]?.let { holder.bind(it) }
+        holder.bind(this.playerdata[position])
 
         // sets the image to the imageview from our itemHolder class
 
@@ -39,12 +43,19 @@ class CustomAdapter(val playerdata: Map<String, PlayerInfo>) : RecyclerView.Adap
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
 
+
         val pName: TextView= itemView.findViewById(R.id.name)
         val pAge: TextView = itemView.findViewById(R.id.age)
         var pPosition : TextView = itemView.findViewById(R.id.position)
         val pTeam: TextView = itemView.findViewById(R.id.team_name)
 
-        fun bind(playerInfo: PlayerInfo) {
+        fun bind(playerInfo: List<PlayerInfo>) {
+            val value = Random.nextInt(0,10)
+
+            pName.text = playerInfo[value].fullName
+            pAge.text = playerInfo[value].age
+            pPosition.text = playerInfo[value].postion
+            pTeam.text = playerInfo[value].team
 
 
 

@@ -56,8 +56,8 @@ class DraftTimeDraftActivity : AppCompatActivity() {
 
                             Log.d("Response", "onResponse: ${response.body()}")
                             //TODO: Adapter and recycler view should go here
-                           // val adapter = response.body()?.let { it1 -> CustomAdapter(it1) }
-                           // recyclerview.adapter = adapter
+                            val adapter = CustomAdapter(response.body()!!)
+                            recyclerview.adapter = adapter
 
 
 

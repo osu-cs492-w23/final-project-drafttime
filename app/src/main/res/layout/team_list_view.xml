@@ -27,19 +27,36 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:text="Age" />
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="30dp"/>
 
         <TextView
             android:id="@+id/position"
+            android:layout_width="84dp"
             android:layout_height="30dp"
-            android:layout_width="70dp"
-            />
+
+            android:text="positions" />
 
         <TextView
             android:id="@+id/team_name"
             android:text="Team"
-            android:layout_width="152dp"
+            android:layout_width="40dp"
             android:layout_height="30dp"
             />
+        <!--Text view for showing the options menu-->
+        <TextView
+            android:id="@+id/textViewOptions"
+            android:layout_width="39dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:gravity="right"
+            android:text="⋮"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textStyle="bold"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </LinearLayout>
 
