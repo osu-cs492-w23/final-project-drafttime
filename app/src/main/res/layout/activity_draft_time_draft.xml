@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/background"
     tools:context="com.example.drafttime.ui.MainActivity">
 
     <Button
