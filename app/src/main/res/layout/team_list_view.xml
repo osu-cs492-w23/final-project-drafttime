@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:text="Draft Option"
+            android:text="Draft"
             android:layout_gravity="center"
             android:textSize="9dp"
             android:textAppearance="?android:textAppearanceLarge"

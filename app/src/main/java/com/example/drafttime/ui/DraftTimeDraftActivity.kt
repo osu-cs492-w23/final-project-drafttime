@@ -5,6 +5,7 @@ import CustomAdapter
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,9 +16,14 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+var change = false
+
+val team = ArrayList<PlayerInfo?>()
+
 class DraftTimeDraftActivity : AppCompatActivity() {
     private val sleeperConnect = ConnectedSleeper.create()
-   // private lateinit var playerAdapter: CustomAdapter
+    private val viewModel: PlayerInfoViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +50,7 @@ class DraftTimeDraftActivity : AppCompatActivity() {
             sleeperConnect.getPlayerData()
 
 
-                .enqueue(object : Callback <List<List<PlayerInfo>>>  {
+                .enqueue(object : Callback<List<List<PlayerInfo>>> {
                     override fun onResponse(
                         call: Call<List<List<PlayerInfo>>>,
                         response: Response<List<List<PlayerInfo>>>
@@ -53,14 +59,10 @@ class DraftTimeDraftActivity : AppCompatActivity() {
                         if (response.isSuccessful) {
 
 
-
                             Log.d("Response", "onResponse: ${response.body()}")
                             //TODO: Adapter and recycler view should go here
-                            val adapter = CustomAdapter(response.body()!!)
+                            val adapter = CustomAdapter(response.body()!!, viewModel)
                             recyclerview.adapter = adapter
-
-
-
 
 
                         }
@@ -71,8 +73,18 @@ class DraftTimeDraftActivity : AppCompatActivity() {
                     }
                 })
         }
-
-
-
+    }
+    fun addDatabase(player: PlayerInfo?) {
+        if (player != null) {
+            viewModel.addPlayer(player)
+        }
     }
 }
+
+
+
+
+
+
+
+
