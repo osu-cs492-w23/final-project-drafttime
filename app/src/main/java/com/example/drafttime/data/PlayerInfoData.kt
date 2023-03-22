@@ -7,5 +7,6 @@ class PlayerInfoData(
    suspend fun insertPlayer(player: PlayerInfo) = dao.insert(player)
     suspend fun deletePlayer(player: PlayerInfo) = dao.delete(player)
 
+    fun getAllPlayerData() = dao.getAllPlayers()
 
 }

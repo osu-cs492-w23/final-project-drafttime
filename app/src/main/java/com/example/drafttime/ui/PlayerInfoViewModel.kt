@@ -2,6 +2,7 @@ package com.example.drafttime.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.drafttime.data.AppDatabase
 import com.example.drafttime.data.PlayerInfo
@@ -12,6 +13,9 @@ class PlayerInfoViewModel(application: Application):AndroidViewModel(application
     private val playerAdd = PlayerInfoData(
         AppDatabase.getInstance(application).playerDao()
     )
+
+    val userPlayers = playerAdd.getAllPlayerData().asLiveData()
+
 
     fun addPlayer(player: PlayerInfo) {
         viewModelScope.launch {

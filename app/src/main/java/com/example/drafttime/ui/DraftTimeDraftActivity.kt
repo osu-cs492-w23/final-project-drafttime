@@ -29,6 +29,7 @@ class DraftTimeDraftActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_draft_time_draft)
         //TODO: Create recycler view
+        title = "Generate Team"
 
         //Get view for recycler adapter
         val recyclerview = findViewById<RecyclerView>(R.id.recyclerview)

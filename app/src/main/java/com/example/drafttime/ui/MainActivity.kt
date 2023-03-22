@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = "Draft Time"
 
         val view_team_btn= findViewById<Button>(R.id.view_team_button)
         val draft_now_btn = findViewById<Button>(R.id.draft_now_button)
