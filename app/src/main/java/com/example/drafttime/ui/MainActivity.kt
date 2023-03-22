@@ -15,41 +15,25 @@ import java.util.Objects
 
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         title = "Draft Time"
-
         val view_team_btn= findViewById<Button>(R.id.view_team_button)
         val draft_now_btn = findViewById<Button>(R.id.draft_now_button)
         val vs_btn = findViewById<Button>(R.id.vs_button)
-
-
-        ///TODO: Convert to view model to prevent reload if device is turned
-
-
-        //TODO: Set up navigation to go to the different screens here
-
         ///View Team button listener
-
-
         view_team_btn?.setOnClickListener {
-
             //Start view team activity
-
             val intent = Intent(this , ViewTeamActivity::class.java)
             startActivity(intent)
-
         }
         ///Draft now button listener
-
         draft_now_btn?.setOnClickListener {
             ///Start draft team activity
             val intent = Intent(this , DraftTimeDraftActivity::class.java)
             startActivity(intent)
         }
-
         ///VS Button listener
         vs_btn?.setOnClickListener {
             //Start VS activity

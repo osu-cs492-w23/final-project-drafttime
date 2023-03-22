@@ -22,7 +22,8 @@
         <activity
             android:name="com.example.drafttime.ui.DraftTimeDraftActivity"
             android:exported="false"
-            android:parentActivityName="com.example.drafttime.ui.MainActivity" />
+            android:parentActivityName="com.example.drafttime.ui.MainActivity"
+            android:launchMode ="singleTop"/>
 
         <activity
             android:name="com.example.drafttime.ui.ViewTeamActivity"
@@ -30,7 +31,9 @@
             android:parentActivityName="com.example.drafttime.ui.MainActivity" />
         <activity
             android:name="com.example.drafttime.ui.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode ="singleTop">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

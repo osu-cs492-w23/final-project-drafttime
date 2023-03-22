@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.ListView
 import androidx.activity.viewModels
 import com.example.connectedweather.R
-import com.example.drafttime.data.PlayerInfo
 
 class ViewTeamActivity : AppCompatActivity() {
 
@@ -26,7 +25,7 @@ class ViewTeamActivity : AppCompatActivity() {
         ///View team recycler view
 
         viewModel.userPlayers.observe(this){playerinfo->
-            adapterL = ListViewAdapter(this , playerinfo)
+            adapterL = ListViewAdapter(this , playerinfo, viewModel)
             listView.adapter = adapterL
 
 
