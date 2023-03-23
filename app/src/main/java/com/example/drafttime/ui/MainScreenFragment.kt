@@ -1,5 +1,7 @@
 package com.example.drafttime.ui
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -15,6 +17,7 @@ class MainScreenFragment : Fragment(R.layout.main_screen) {
         val view_team_btn = view.findViewById<Button>(R.id.view_team_button)
         val draft_now_btn = view.findViewById<Button>(R.id.draft_now_button)
         val vs_btn = view.findViewById<Button>(R.id.vs_button)
+        val fantasy_football_btn = view.findViewById<Button>(R.id.go_to_sleeper)
 
         ///View Team button listener
         view_team_btn?.setOnClickListener {
@@ -36,6 +39,13 @@ class MainScreenFragment : Fragment(R.layout.main_screen) {
             val directions = MainScreenFragmentDirections.navigationToVs()
             findNavController().navigate(directions)
 
+        }
+        //Go to sleeper implement intent
+        fantasy_football_btn?.setOnClickListener{
+            val webIntent: Intent = Uri.parse("https://sleeper.com/").let { webpage ->
+                Intent(Intent.ACTION_VIEW, webpage)
+            }
+            startActivity(webIntent)
         }
     }
 
