@@ -35,7 +35,6 @@
             android:id="@+id/view_position"
             android:layout_width="84dp"
             android:layout_height="30dp"
-
             android:text="positions" />
 
         <!--Text view for showing the options menu-->

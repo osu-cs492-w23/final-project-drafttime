@@ -7,10 +7,11 @@ import kotlinx.coroutines.flow.Flow
 interface PlayerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(player: PlayerInfo)
+
     @Delete
     suspend fun delete(player: PlayerInfo)
 
     @Query("SELECT * FROM PlayerInfo")
-    fun getAllPlayers(): Flow <List<PlayerInfo>>
+    fun getAllPlayers(): Flow<List<PlayerInfo>>
 
 }

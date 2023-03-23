@@ -11,11 +11,9 @@ import com.example.drafttime.ui.PlayerInfoViewModel
 import kotlin.random.Random
 
 
-class CustomAdapter(val playerdata: List<List<PlayerInfo>>, val viewModel: PlayerInfoViewModel) :
+class CustomAdapter(val playerdata: List<List<PlayerInfo>?>, val viewModel: PlayerInfoViewModel) :
 
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
-
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,9 +23,8 @@ class CustomAdapter(val playerdata: List<List<PlayerInfo>>, val viewModel: Playe
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.team_list_view, parent, false)
 
-        return ViewHolder(view , viewModel)
+        return ViewHolder(view, viewModel)
     }
-
 
 
     override fun getItemCount(): Int {
@@ -36,16 +33,16 @@ class CustomAdapter(val playerdata: List<List<PlayerInfo>>, val viewModel: Playe
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(this.playerdata[position] , position)
+        this.playerdata[position]?.let { holder.bind(it, position) }
 
         // sets the image to the imageview from our itemHolder class
 
     }
+
     // return the number of the items in the list
     // Holds the views for adding it to image and text
-    class ViewHolder(ItemView: View, viewModel: PlayerInfoViewModel) : RecyclerView.ViewHolder(ItemView) {
-
-
+    class ViewHolder(ItemView: View, viewModel: PlayerInfoViewModel) :
+        RecyclerView.ViewHolder(ItemView) {
 
 
         val pName: TextView = itemView.findViewById(R.id.name)
@@ -57,7 +54,6 @@ class CustomAdapter(val playerdata: List<List<PlayerInfo>>, val viewModel: Playe
         var adapterPos = 0
 
 
-
         ///Handle clicks from the user
         init {
 
@@ -67,12 +63,17 @@ class CustomAdapter(val playerdata: List<List<PlayerInfo>>, val viewModel: Playe
 
                 //team.add(player)
                 player?.let { it1 -> viewModel.addPlayer(it1) }
-                Toast.makeText(itemView.context, "Player Added ${player?.fullName}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    itemView.context,
+                    "Player Added ${player?.fullName}",
+                    Toast.LENGTH_SHORT
+                ).show()
 
 
             }
 
         }
+
         fun bind(playerInfo: List<PlayerInfo>, position: Int) {
             val value = Random.nextInt(0, 10)
             adapterPos = position

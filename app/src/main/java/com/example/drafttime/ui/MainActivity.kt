@@ -1,47 +1,33 @@
 package com.example.drafttime.ui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.connectedweather.R
-import com.example.drafttime.api.ConnectedSleeper
-import com.example.drafttime.data.PlayerInfo
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.Objects
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var appBarConfiguration: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        title = "Draft Time"
-        val view_team_btn= findViewById<Button>(R.id.view_team_button)
-        val draft_now_btn = findViewById<Button>(R.id.draft_now_button)
-        val vs_btn = findViewById<Button>(R.id.vs_button)
-        ///View Team button listener
-        view_team_btn?.setOnClickListener {
-            //Start view team activity
-            val intent = Intent(this , ViewTeamActivity::class.java)
-            startActivity(intent)
-        }
-        ///Draft now button listener
-        draft_now_btn?.setOnClickListener {
-            ///Start draft team activity
-            val intent = Intent(this , DraftTimeDraftActivity::class.java)
-            startActivity(intent)
-        }
-        ///VS Button listener
-        vs_btn?.setOnClickListener {
-            //Start VS activity
-            val intent = Intent(this, DraftTimeVsActivity::class.java)
-            startActivity(intent)
-        }
+
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.nav_host_fragment
+        ) as NavHostFragment
+        val navController = navHostFragment.navController
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration)||super.onSupportNavigateUp()
+    }
 }
 
 

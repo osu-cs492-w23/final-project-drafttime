@@ -9,7 +9,7 @@ import com.example.drafttime.data.PlayerInfo
 import com.example.drafttime.data.PlayerInfoData
 import kotlinx.coroutines.launch
 
-class PlayerInfoViewModel(application: Application):AndroidViewModel(application) {
+class PlayerInfoViewModel(application: Application) : AndroidViewModel(application) {
     private val playerAdd = PlayerInfoData(
         AppDatabase.getInstance(application).playerDao()
     )

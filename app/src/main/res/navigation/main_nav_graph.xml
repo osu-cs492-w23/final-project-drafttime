@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/main_screen">
+    <fragment
+        android:id="@+id/main_screen"
+        android:name="com.example.drafttime.ui.MainScreenFragment"
+        android:label="@string/draft_home">
+
+        <action
+            android:id="@+id/navigation_to_draft_view"
+            app:destination="@+id/draft_time_view"/>
+        <action
+            android:id="@+id/navigation_to_draft"
+            app:destination="@+id/draft_time_draft"/>
+        <action
+            android:id="@+id/navigation_to_vs"
+            app:destination="@+id/team_vs"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/draft_time_view"
+        android:name="com.example.drafttime.ui.ViewTeamFragment"
+        android:label="@string/view_team"/>
+    <fragment
+        android:id="@+id/draft_time_draft"
+        android:name="com.example.drafttime.ui.DraftTimeDraftFragment"
+        android:label="@string/draft_time"/>
+    <fragment
+        android:id = "@+id/team_vs"
+        android:name="com.example.drafttime.ui.DraftTimeVsFragment"
+        android:label="@string/team_vs"/>
+
+</navigation>
