@@ -3,10 +3,13 @@ package com.example.drafttime.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.ListView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.connectedweather.R
 
+
+var launchVS = false
 class ViewTeamFragment : Fragment(R.layout.view_team_fragment) {
 
     lateinit var listView: ListView
@@ -17,12 +20,6 @@ class ViewTeamFragment : Fragment(R.layout.view_team_fragment) {
 
         listView = view.findViewById(R.id.listview_view_team)
 
-        ///TODO:Create recyclerview adapater( Copy and paste from custom adapter)
-        ///TODO: Pass data from data base into adapter
-        ///TODO: Modify button to delete player from list
-        ///TODO: Optional start another activity to to see the details of another activity
-
-        ///View team recycler view
 
         viewModel.userPlayers.observe(viewLifecycleOwner) { playerinfo ->
             adapterL = ListViewAdapter(requireContext(), playerinfo, viewModel)
@@ -30,6 +27,52 @@ class ViewTeamFragment : Fragment(R.layout.view_team_fragment) {
 
 
         }
+        launchVS = true
+        viewModel.userQB.observe(viewLifecycleOwner){playerQB->
+            if(playerQB.size < 1){
+                Toast.makeText(requireContext(),
+                    "1 QB required",
+                    Toast.LENGTH_SHORT
+                ).show()
+                launchVS = false
+
+            }
+
+        }
+        viewModel.userRB.observe(viewLifecycleOwner){playerRB ->
+            if(playerRB.size < 2){
+                Toast.makeText(requireContext(),
+                    "2 RB required",
+                    Toast.LENGTH_SHORT
+                ).show()
+                launchVS = false
+
+            }
+
+        }
+        viewModel.userWR.observe(viewLifecycleOwner){playerWR ->
+            if(playerWR.size < 2){
+                Toast.makeText(requireContext(),
+                    "2 WR required",
+                    Toast.LENGTH_SHORT
+                ).show()
+                launchVS = false
+
+            }
+        }
+        viewModel.userTE.observe(viewLifecycleOwner){playerTE ->
+            if(playerTE.size < 1){
+                Toast.makeText(requireContext(),
+                    "1 TE required",
+                    Toast.LENGTH_SHORT
+                ).show()
+                launchVS = false
+
+            }
+
+
+    }
+
     }
 
 }

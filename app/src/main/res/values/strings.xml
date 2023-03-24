@@ -2,11 +2,13 @@
     <string name="app_name">DraftTime_Final</string>
     <string name="btn">Draft Now</string>
     <string name="view_team_btn">View Team</string>
-    <string name="draft_team_button">Draft Team</string>
+    <string name="draft_team_button">Draft Now</string>
     <string name="vs_button">Team V.S.</string>
-    <string name="generate_team">Generate Team</string>
+    <string name="generate_team">Generate Players</string>
     <string name="view_team">View Team</string>
-    <string name="draft_time">Draft Team</string>
+    <string name="draft_time">Draft Now</string>
     <string name="team_vs">Team V.S.</string>
     <string name="draft_home">Draft Time</string>
+    <string name="join_draftroom_btn">Join Room</string>
+    <string name="sleeper">Sleeper API</string>
 </resources>

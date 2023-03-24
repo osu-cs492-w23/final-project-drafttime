@@ -1,3 +1,12 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32"
+    }
+}
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -5,8 +14,8 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin'
 
 
-}
 
+}
 android {
     namespace 'com.example.connectedweather'
     compileSdk 33
@@ -32,7 +41,7 @@ android {
         viewBinding true
 
     }
-        compileOptions {
+    compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -40,6 +49,7 @@ android {
         jvmTarget = '1.8'
     }
 }
+
 
 dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
@@ -82,5 +92,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1'
+    implementation "com.github.doorbash:colyseus-kotlin:0.14.5"
 
 }

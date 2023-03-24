@@ -8,5 +8,9 @@ class PlayerInfoData(
     suspend fun deletePlayer(player: PlayerInfo) = dao.delete(player)
 
     fun getAllPlayerData() = dao.getAllPlayers()
+    fun getAllQbData() = dao.getAllQb()
+    fun getAllRbData() = dao.getAllRb()
+    fun getAllWrData() = dao.getAllWr()
+    fun getAllTeData() = dao.getAllTe()
 
 }

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.connectedweather.R
@@ -18,6 +19,7 @@ class MainScreenFragment : Fragment(R.layout.main_screen) {
         val draft_now_btn = view.findViewById<Button>(R.id.draft_now_button)
         val vs_btn = view.findViewById<Button>(R.id.vs_button)
         val fantasy_football_btn = view.findViewById<Button>(R.id.go_to_sleeper)
+
 
         ///View Team button listener
         view_team_btn?.setOnClickListener {
@@ -36,11 +38,20 @@ class MainScreenFragment : Fragment(R.layout.main_screen) {
         ///VS Button listener
         vs_btn?.setOnClickListener {
 
-            val directions = MainScreenFragmentDirections.navigationToVs()
-            findNavController().navigate(directions)
+            if(launchVS) {
+
+                val directions = MainScreenFragmentDirections.navigationToVs()
+                findNavController().navigate(directions)
+            }else{
+                Toast.makeText(requireContext(),
+                    "VS Disabled, Incomplete Team",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
         }
         //Go to sleeper implement intent
+
         fantasy_football_btn?.setOnClickListener{
             val webIntent: Intent = Uri.parse("https://sleeper.com/").let { webpage ->
                 Intent(Intent.ACTION_VIEW, webpage)

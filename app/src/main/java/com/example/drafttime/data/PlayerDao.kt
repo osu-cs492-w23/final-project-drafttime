@@ -14,4 +14,15 @@ interface PlayerDao {
     @Query("SELECT * FROM PlayerInfo")
     fun getAllPlayers(): Flow<List<PlayerInfo>>
 
+    @Query("SELECT * FROM PlayerInfo WHERE postion = 'QB';")
+    fun getAllQb(): Flow<List<PlayerInfo>>
+
+    @Query("SELECT * FROM PlayerInfo WHERE postion = 'RB';")
+    fun getAllRb(): Flow<List<PlayerInfo>>
+
+    @Query("SELECT * FROM PlayerInfo WHERE postion = 'WR';")
+    fun getAllWr():Flow<List<PlayerInfo>>
+    @Query("SELECT * FROM PlayerInfo WHERE postion = 'TE';")
+    fun getAllTe():Flow<List<PlayerInfo>>
+
 }

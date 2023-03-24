@@ -15,6 +15,10 @@ class PlayerInfoViewModel(application: Application) : AndroidViewModel(applicati
     )
 
     val userPlayers = playerAdd.getAllPlayerData().asLiveData()
+    val userQB = playerAdd.getAllQbData().asLiveData()
+    val userRB = playerAdd.getAllRbData().asLiveData()
+    val userWR = playerAdd.getAllWrData().asLiveData()
+    val userTE = playerAdd.getAllTeData().asLiveData()
 
 
     fun addPlayer(player: PlayerInfo) {
