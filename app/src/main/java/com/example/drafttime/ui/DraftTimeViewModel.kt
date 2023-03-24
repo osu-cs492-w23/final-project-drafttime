@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 
 class DraftTimeViewModel : ViewModel() {
     private val players = DraftTimeRepository(ConnectedSleeper.create())
-    private val _playerResults = MutableLiveData<List<List<PlayerInfo>>>(null)
-    val results: LiveData<List<List<PlayerInfo>>> = _playerResults
+    private val _playerResults = MutableLiveData<List<List<PlayerInfo?>>>(null)
+    val results: LiveData<List<List<PlayerInfo?>>> = _playerResults
 
 
     fun loadPlayers() {

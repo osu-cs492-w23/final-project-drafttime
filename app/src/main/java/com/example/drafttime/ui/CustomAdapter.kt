@@ -11,7 +11,7 @@ import com.example.drafttime.ui.PlayerInfoViewModel
 import kotlin.random.Random
 
 
-class CustomAdapter(val playerdata: List<List<PlayerInfo>?>, val viewModel: PlayerInfoViewModel) :
+class CustomAdapter(val playerdata: List<List<PlayerInfo?>>, val viewModel: PlayerInfoViewModel) :
 
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
@@ -74,14 +74,14 @@ class CustomAdapter(val playerdata: List<List<PlayerInfo>?>, val viewModel: Play
 
         }
 
-        fun bind(playerInfo: List<PlayerInfo>, position: Int) {
+        fun bind(playerInfo: List<PlayerInfo?>, position: Int) {
             val value = Random.nextInt(0, 10)
             adapterPos = position
             player = playerInfo[value]
-            pName.text = playerInfo[value].fullName
-            pAge.text = playerInfo[value].age
-            pPosition.text = playerInfo[value].postion
-            pTeam.text = playerInfo[value].team
+            pName.text = playerInfo[value]?.fullName
+            pAge.text = playerInfo[value]?.age
+            pPosition.text = playerInfo[value]?.postion
+            pTeam.text = playerInfo[value]?.team
 
 
         }

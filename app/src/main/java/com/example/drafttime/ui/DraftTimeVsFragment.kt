@@ -77,14 +77,14 @@ class DraftTimeVsFragment : Fragment(R.layout.draft_time_vs_fragment) {
             loadingIndicator.visibility = View.INVISIBLE
 
             // Initial values
-            val p1qb = Player("QB", qb, (1..40).random())
-            val p1rb1 = Player("RB1", rb1, (1..40).random())
-            val p1rb2 = Player("RB2", rb2, (1..40).random())
-            val p1wr1 = Player("WR1", wr1, (1..40).random())
-            val p1wr2 = Player("WR2", wr2, (1..40).random())
-            val p1te = Player("TE", te, (1..40).random())
-            val p1flex1 = Player("FLEX1", flex_1, (1..40).random())
-            val p1flex2 = Player("FLEX2", flex_2, (1..40).random())
+            val p1qb = Player("QB", "Patrick Mahomes", (1..40).random())
+            val p1rb1 = Player("RB1", "Isiah Pacheco", (1..40).random())
+            val p1rb2 = Player("RB2", "Clyde Edwards", (1..40).random())
+            val p1wr1 = Player("WR1", "Skyy Moore", (1..40).random())
+            val p1wr2 = Player("WR2", "Ihmir Smith", (1..40).random())
+            val p1te = Player("TE", "Travis Kelce", (1..40).random())
+            val p1flex1 = Player("FLEX1", "Jawaan Taylor", (1..40).random())
+            val p1flex2 = Player("FLEX2", "Leo Chenal", (1..40).random())
 
 
             val p2qb = Player("QB", "Matthew Stafford", (1..40).random())
