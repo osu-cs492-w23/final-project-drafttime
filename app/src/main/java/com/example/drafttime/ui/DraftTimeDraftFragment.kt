@@ -39,8 +39,11 @@ class DraftTimeDraftFragment : Fragment(R.layout.draft_time_draft_fragment) {
         generate_team_btn.setOnClickListener {
 
             playerModel.results.observe(viewLifecycleOwner) { playerResults ->
-                val adapter = CustomAdapter(playerResults, viewModel)
-                recyclerview.adapter = adapter
+                if(playerResults != null) {
+                    val adapter = CustomAdapter(playerResults, viewModel)
+                    recyclerview.adapter = adapter
+                }
+
             }
         }
 
